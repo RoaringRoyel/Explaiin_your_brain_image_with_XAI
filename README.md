@@ -13,7 +13,15 @@
 ### 🌐 [Live Demo → explaiin-your-brain-image-with-xai-1.onrender.com](https://explaiin-your-brain-image-with-xai-1.onrender.com/)
 
 </div>
-
+<div>
+<p align="center">
+  <img src="demo/1.png" width="45%" />
+  <img src="demo/2.png" width="45%" />
+</p>
+<p align="center">
+  <em>Left: First view | Right: Second view</em>
+</p>
+</div>
 ---
 
 ## 📸 Overview
