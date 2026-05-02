@@ -14,10 +14,7 @@ from fastapi.templating import Jinja2Templates
 
 from torchvision import models, transforms
 
-
-# ============================================================
 # Paths
-# ============================================================
 
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / "best_brain_mri_resnet18.pth"
@@ -62,29 +59,21 @@ model.to(device)
 model.eval()
 
 
-# ============================================================
 # Transforms
-# ============================================================
 
 transform = transforms.Compose([
     transforms.Resize((IMG_SIZE, IMG_SIZE)),
     transforms.ToTensor(),
 ])
 
-
-# ============================================================
 # FastAPI setup
-# ============================================================
 
 app = FastAPI(title="Brain MRI XAI Classifier")
 
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 templates = Jinja2Templates(directory=str(TEMPLATE_DIR))
 
-
-# ============================================================
 # Prediction
-# ============================================================
 
 def predict_image(image_path: Path):
     image = Image.open(image_path).convert("RGB")
@@ -104,10 +93,7 @@ def get_probability(class_label, probs):
         return round(float(probs[class_names.index(class_label)]) * 100, 2)
     return None
 
-
-# ============================================================
 # Grad-CAM
-# ============================================================
 
 class GradCAM:
     def __init__(self, model, target_layer):
@@ -167,10 +153,7 @@ def save_gradcam_overlay(image_tensor, class_idx, save_path: Path):
 
     save_figure(image_np, overlay, "Original MRI", "Grad-CAM Explanation", save_path)
 
-
-# ============================================================
 # SHAP
-# ============================================================
 
 def save_shap_explanation(image_tensor, class_idx, save_path: Path):
     try:
@@ -219,10 +202,7 @@ def save_shap_explanation(image_tensor, class_idx, save_path: Path):
 
     save_figure(image_np, overlay, "Original MRI", "SHAP Explanation", save_path)
 
-
-# ============================================================
 # LIME
-# ============================================================
 
 def lime_predict_fn(images_np):
     model.eval()
@@ -267,10 +247,7 @@ def save_lime_explanation(image_tensor, class_idx, save_path: Path):
 
     save_figure(image_np, lime_overlay, "Original MRI", "LIME Explanation", save_path)
 
-
-# ============================================================
 # Plot helper
-# ============================================================
 
 def save_figure(original, explanation, left_title, right_title, save_path: Path):
     plt.figure(figsize=(10, 5))
@@ -309,9 +286,7 @@ def generate_explanation(method, image_tensor, pred_idx, result_path):
     return "Grad-CAM"
 
 
-# ============================================================
 # Routes
-# ============================================================
 
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
