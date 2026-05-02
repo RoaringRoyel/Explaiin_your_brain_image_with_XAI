@@ -1,0 +1,114 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# =========================
+# Virtual Environments
+# =========================
+venv/
+env/
+.venv/
+ENV/
+
+# =========================
+# Jupyter Notebook
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Dataset / Data files
+# =========================
+data/
+dataset/
+archive/
+*.zip
+*.tar
+*.gz
+
+# =========================
+# Model files
+# =========================
+*.pth
+*.pt
+*.h5
+*.ckpt
+
+# =========================
+# Logs & outputs
+# =========================
+logs/
+*.log
+outputs/
+runs/
+
+# =========================
+# Images / generated plots
+# =========================
+*.png
+*.jpg
+*.jpeg
+
+# =========================
+# SHAP / LIME temp files
+# =========================
+*.npy
+*.npz
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+archive/
+__pycache__/
+.ipynb_checkpoints/
+*.pth
+*.pt
+*.log
+*.png
+*.jpg
+
+git rm -r --cached .
+git add .
+git commit -m "clean repo with gitignore"
+
+archive/
+__pycache__/
+.ipynb_checkpoints/
+*.pth
+*.pt
+*.log
+*.png
+*.jpg
+*.jpeg
+*.npy
+*.npz
+env/
+venv/
+.venv/
+
+archive/
+__pycache__/
+.ipynb_checkpoints/
+*.pth
+*.pt
+*.png
+*.jpg
+*.jpeg
+*.npy
+*.npz
+env/
+venv/
+.venv/.env
